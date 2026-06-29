@@ -1,9 +1,9 @@
 import { defineConfig } from "vite"
-import path, { resolve } from "node:path"
-import glob from "glob"
+import { resolve } from "node:path"
+import fg from "fast-glob"
 
-import HtmlCssPurgePlugin from "vite-plugin-purgecss"
 import HandlebarPlugin from "vite-plugin-handlebars"
+import HtmlCssPurgePlugin from "vite-plugin-purgecss"
 
 import { fileURLToPath } from "url"
 import { dirname } from "path"
@@ -13,14 +13,12 @@ const __dirname = dirname(__filename)
 
 function obtenerHtmlFiles() {
   return Object.fromEntries(
-    glob
-      .sync("**/*.html", {
-        ignore: ["dist/**", "node_modules/**"]
-      })
-      .map((file) => [
-        file.replace(".html", ""),
-        resolve(__dirname, file)
-      ])
+    fg.sync("**/*.html", {
+      ignore: ["dist/**", "node_modules/**"]
+    }).map((file) => [
+      file.replace(".html", ""),
+      resolve(__dirname, file)
+    ])
   )
 }
 
@@ -43,3 +41,6 @@ export default defineConfig({
     HtmlCssPurgePlugin()
   ]
 })
+
+
+// se utilizo este comando parara poder ejecutar le vite bien npm install fast-glob
