@@ -22,7 +22,7 @@ function obtenerHtmlFiles() {
 }
 
 export default defineConfig({
-    base: "/pw2_portafolio/",   // sin esto en git pages sale error 404 
+    base: "/portafolio/",   // sin esto en git pages sale error 404 
 
     appType: "mpa",
 
