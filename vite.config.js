@@ -22,12 +22,13 @@ function obtenerHtmlFiles() {
   )
 }
 
-export default defineConfig({
-  base: "/portafolio/",
 
+export default defineConfig({
+  base: '/portafolio/',
   appType: "mpa",
 
   build: {
+    outDir: "dist",
     rollupOptions: {
       input: obtenerHtmlFiles()
     }
@@ -41,6 +42,3 @@ export default defineConfig({
     HtmlCssPurgePlugin()
   ]
 })
-
-
-// se utilizo este comando parara poder ejecutar le vite bien npm install fast-glob
